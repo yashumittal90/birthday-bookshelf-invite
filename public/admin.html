@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · Baby's First Chapter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:    #16271a;
+      --green-mid:#1e3322;
+      --gold:     #c8a96e;
+      --cream:    #f7f1e8;
+      --champagne:#f7f0dc;
+      --ink:      #1e1e1e;
+      --ink-soft: #3d3830;
+      --muted:    #8a7e6e;
+      --border:   rgba(200,169,110,0.22);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Jost', sans-serif; background: var(--green); color: var(--cream); min-height: 100vh; }
+
+    /* ── Login ── */
+    #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .login-card {
+      background: var(--champagne); border: 1px solid var(--border); border-radius: 6px;
+      padding: 2.5rem 2rem; width: 100%; max-width: 360px; text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    }
+    .login-card .seal { font-size: 1.4rem; color: var(--gold); display: block; margin-bottom: 1rem; }
+    .login-card h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--ink); margin-bottom: 0.35rem; }
+    .login-card p { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 1.75rem; }
+    .login-card input {
+      width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 4px;
+      background: #fff; font-family: 'Jost', monospace; font-size: 0.85rem; color: var(--ink);
+      outline: none; margin-bottom: 0.9rem;
+    }
+    .login-card input:focus { border-color: var(--gold); }
+    .login-card button {
+      width: 100%; padding: 0.75rem; background: var(--green); color: var(--cream);
+      border: none; border-radius: 4px; font-family: 'Jost', sans-serif; font-size: 0.8rem;
+      font-weight: 500; letter-spacing: 0.1em; cursor: pointer; transition: background 0.2s;
+    }
+    .login-card button:hover { background: var(--green-mid); }
+    .login-error { font-size: 0.75rem; color: #b94040; margin-top: 0.75rem; display: none; }
+
+    /* ── Dashboard ── */
+    #dashboard { display: none; padding: 2rem 1.5rem 4rem; max-width: 1040px; margin: 0 auto; }
+
+    .dash-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 2rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(200,169,110,0.18);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .dash-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; font-style: italic; color: var(--gold); }
+    .dash-header p { font-size: 0.7rem; color: rgba(200,169,110,0.45); letter-spacing: 0.12em; margin-top: 0.2rem; }
+    .sign-out {
+      background: transparent; border: 1px solid rgba(200,169,110,0.25); color: rgba(200,169,110,0.5);
+      padding: 0.4rem 1rem; border-radius: 3px; font-family: 'Jost', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s;
+    }
+    .sign-out:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .stat-card { background: var(--green-mid); border: 1px solid rgba(200,169,110,0.12); border-radius: 6px; padding: 1.25rem 1.5rem; }
+    .stat-card .label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(200,169,110,0.55); margin-bottom: 0.4rem; }
+    .stat-card .value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 400; color: var(--gold); line-height: 1; }
+    .stat-card .sub { font-size: 0.7rem; color: rgba(247,241,232,0.3); margin-top: 0.3rem; }
+
+    /* Section title */
+    .section-label {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; font-style: italic;
+      color: rgba(200,169,110,0.75); letter-spacing: 0.04em;
+      margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(200,169,110,0.12);
+    }
+
+    /* RSVP table */
+    .rsvp-wrap { margin-bottom: 3rem; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,169,110,0.45); padding: 0 0.75rem 0.65rem; font-weight: 400; }
+    td { padding: 0.75rem; font-size: 0.82rem; color: var(--cream); border-top: 1px solid rgba(200,169,110,0.07); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.025); }
+    .code-badge { font-family: 'Jost', monospace; font-size: 0.7rem; background: rgba(200,169,110,0.12); color: var(--gold); padding: 0.2rem 0.5rem; border-radius: 3px; letter-spacing: 0.08em; white-space: nowrap; }
+    .guest-pill { display: inline-block; background: rgba(200,169,110,0.14); color: var(--gold); border-radius: 20px; padding: 0.1rem 0.6rem; font-size: 0.75rem; }
+    .book-tag { display: inline-block; background: rgba(200,169,110,0.08); border: 1px solid rgba(200,169,110,0.18); color: rgba(247,241,232,0.65); font-size: 0.67rem; padding: 0.15rem 0.5rem; border-radius: 3px; margin: 0.1rem 0.1rem 0.1rem 0; line-height: 1.4; }
+    .date-cell { font-size: 0.7rem; color: rgba(247,241,232,0.3); white-space: nowrap; }
+    .empty-note { font-size: 0.82rem; color: rgba(247,241,232,0.28); padding: 0.75rem 0; }
+    .delete-btn {
+      background: transparent; border: 1px solid rgba(185,64,64,0.3);
+      color: rgba(185,64,64,0.5); border-radius: 3px;
+      font-size: 0.68rem; padding: 0.2rem 0.5rem; cursor: pointer;
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .delete-btn:hover { border-color: #b94040; color: #b94040; background: rgba(185,64,64,0.08); }
+
+    /* Books */
+    .books-section { margin-bottom: 2rem; }
+    .books-filter { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-btn {
+      font-size: 0.7rem; letter-spacing: 0.08em; padding: 0.3rem 0.85rem;
+      border-radius: 20px; border: 1px solid rgba(200,169,110,0.22);
+      background: transparent; color: rgba(200,169,110,0.55); cursor: pointer; transition: all 0.15s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: rgba(200,169,110,0.12); color: var(--gold); border-color: rgba(200,169,110,0.45); }
+    .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.55rem; }
+    .book-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      background: var(--green-mid); border: 1px solid rgba(200,169,110,0.1);
+      border-radius: 5px; padding: 0.7rem 0.85rem; font-size: 0.78rem; line-height: 1.4;
+    }
+    .book-item.claimed { border-color: rgba(200,169,110,0.28); }
+    .book-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 0.32rem; }
+    .book-item.claimed .book-dot { background: var(--gold); }
+    .book-item:not(.claimed) .book-dot { background: rgba(200,169,110,0.18); }
+    .book-title { color: var(--cream); }
+    .book-claimed-by { font-size: 0.67rem; color: rgba(200,169,110,0.55); margin-top: 0.15rem; }
+
+    @media (max-width: 600px) {
+      th:nth-child(5), td:nth-child(5) { display: none; }
+      #dashboard { padding: 1.25rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-card">
+    <span class="seal">✦</span>
+    <h1>Admin Access</h1>
+    <p>BABY'S FIRST CHAPTER</p>
+    <input type="password" id="key-input" placeholder="Enter admin key" autocomplete="off" />
+    <button id="key-submit">Enter →</button>
+    <p class="login-error" id="login-error">Invalid key. Try again.</p>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="dash-header">
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>BABY'S FIRST CHAPTER</p>
+    </div>
+    <button class="sign-out" id="sign-out">Sign out</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="rsvp-wrap">
+    <p class="section-label">RSVPs</p>
+    <div id="rsvp-wrap"></div>
+  </div>
+
+  <div class="books-section">
+    <p class="section-label">Book Shelf</p>
+    <div class="books-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="claimed">Claimed</button>
+      <button class="filter-btn" data-filter="unclaimed">Available</button>
+    </div>
+    <div class="books-grid" id="books-grid"></div>
+  </div>
+</div>
+
+<script>
+  let adminKey = sessionStorage.getItem('admin_key') || '';
+  let allBooks = [];
+
+  function fmt(s) {
+    if (!s) return '—';
+    const d = new Date(s.includes('Z') ? s : s + 'Z');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+           d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  async function fetchData(key) {
+    const r = await fetch('/api/admin?key=' + encodeURIComponent(key));
+    return r.status === 403 ? null : r.json();
+  }
+
+  function renderStats(d) {
+    const claimed = d.allBooks.filter(b => b.claimed).length;
+    document.getElementById('stats').innerHTML = [
+      ['Families RSVPed', d.totalFamilies, 'confirmed'],
+      ['Total Guests',    d.totalGuests,   'attending'],
+      ['Books Claimed',   claimed,          'of ' + d.allBooks.length + ' on shelf'],
+      ['Still Available', d.allBooks.length - claimed, 'books left'],
+    ].map(([l, v, s]) => `
+      <div class="stat-card">
+        <div class="label">${l}</div>
+        <div class="value">${v}</div>
+        <div class="sub">${s}</div>
+      </div>`).join('');
+  }
+
+  function renderRsvps(rsvps) {
+    if (!rsvps.length) { document.getElementById('rsvp-wrap').innerHTML = '<p class="empty-note">No RSVPs yet.</p>'; return; }
+    document.getElementById('rsvp-wrap').innerHTML = `
+      <table>
+        <thead><tr><th>Code</th><th>Family</th><th>Guests</th><th>Books</th><th>Date</th><th></th></tr></thead>
+        <tbody>${rsvps.map(r => `
+          <tr data-id="${r.id}">
+            <td><span class="code-badge">${r.code}</span></td>
+            <td>${r.name}</td>
+            <td><span class="guest-pill">${r.count}</span></td>
+            <td>${r.books.length ? r.books.map(b => `<span class="book-tag">${b}</span>`).join('') : '<span style="color:rgba(247,241,232,0.2);font-size:0.72rem">—</span>'}</td>
+            <td class="date-cell">${fmt(r.at)}</td>
+            <td><button class="delete-btn" data-id="${r.id}">Delete</button></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>`;
+
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.id;
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        const name = row.querySelector('td:nth-child(2)').textContent;
+        if (!confirm(`Delete RSVP for "${name}"? This also frees their book claims.`)) return;
+        btn.textContent = '…'; btn.disabled = true;
+        const res = await fetch(`/api/admin/rsvp/${id}?key=${encodeURIComponent(adminKey)}`, { method: 'DELETE' });
+        if (res.ok) {
+          row.style.opacity = '0'; row.style.transition = 'opacity 0.3s';
+          setTimeout(() => { row.remove(); refreshStats(); }, 320);
+        } else {
+          btn.textContent = 'Delete'; btn.disabled = false;
+          alert('Delete failed.');
+        }
+      });
+    });
+  }
+
+  async function refreshStats() {
+    const data = await fetchData(adminKey);
+    if (data) { allBooks = data.allBooks; renderStats(data); renderBooks(allBooks, document.querySelector('.filter-btn.active')?.dataset.filter || 'all'); }
+  }
+
+  function renderBooks(books, filter = 'all') {
+    const list = filter === 'all' ? books : books.filter(b => filter === 'claimed' ? b.claimed : !b.claimed);
+    document.getElementById('books-grid').innerHTML = list.map(b => `
+      <div class="book-item ${b.claimed ? 'claimed' : ''}">
+        <span class="book-dot"></span>
+        <div>
+          <div class="book-title">${b.title}</div>
+          ${b.claimed ? `<div class="book-claimed-by">→ ${b.claimedBy || 'claimed'}</div>` : ''}
+        </div>
+      </div>`).join('');
+  }
+
+  async function showDashboard(key) {
+    const data = await fetchData(key);
+    if (!data) return false;
+    adminKey = key;
+    sessionStorage.setItem('admin_key', key);
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    allBooks = data.allBooks;
+    renderStats(data);
+    renderRsvps(data.rsvps);
+    renderBooks(allBooks);
+    return true;
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderBooks(allBooks, btn.dataset.filter);
+    });
+  });
+
+  document.getElementById('key-submit').addEventListener('click', async () => {
+    const key = document.getElementById('key-input').value.trim();
+    if (!key) return;
+    const ok = await showDashboard(key);
+    if (!ok) { document.getElementById('login-error').style.display = 'block'; document.getElementById('key-input').value = ''; }
+  });
+  document.getElementById('key-input').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('key-submit').click(); });
+  document.getElementById('sign-out').addEventListener('click', () => { sessionStorage.removeItem('admin_key'); location.reload(); });
+
+  // Auto-login from session
+  if (adminKey) showDashboard(adminKey);
+</script>
+</body>
+</html>

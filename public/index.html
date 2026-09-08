@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baby's First Chapter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Tiro+Devanagari+Sanskrit&family=Noto+Sans+Kannada:wght@400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- LOCK SCREEN                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="lock-screen">
+    <div class="floating-pages" id="floating-pages"></div>
+    <div class="lock-content">
+      <div class="lock-logo">✦</div>
+      <h1 class="lock-title">You've been invited</h1>
+      <p class="lock-subtitle">Enter your invite code to open</p>
+      <div class="code-input-wrap">
+        <input type="text" id="code-input" placeholder="INVITE CODE" maxlength="8" autocomplete="off" spellcheck="false" />
+        <button id="code-submit">→</button>
+      </div>
+      <p class="code-error" id="code-error">That code doesn't seem right. Check your invite.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- WELCOME MESSAGE (per family)               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="welcome-screen">
+    <div class="letter-card" id="letter-card">
+      <div class="letter-seal">✦</div>
+      <p class="letter-eyebrow">A personal note</p>
+      <h2 class="letter-names" id="letter-names"></h2>
+      <div class="letter-rule"></div>
+      <p class="letter-message" id="letter-message"></p>
+      <p class="letter-sign">— Arjun &amp; Priya</p>
+      <button class="letter-enter" id="letter-enter">Open their story →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- MAIN SITE                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- Identity chip — top-right, shown once unlocked -->
+  <div id="identity-chip">
+    <span id="identity-name"></span>
+    <button id="identity-reset" title="Sign out">✕</button>
+  </div>
+
+  <div id="main-site">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Your City · Your Date</p>
+        <h1 class="hero-name">Aarav</h1>
+        <p class="hero-chapter">Chapter One</p>
+        <div class="hero-divider"><span>✦</span></div>
+        <p class="hero-tagline">One year. One shelf. One little soul<br/>who changed everything.</p>
+        <a href="#journey" class="hero-scroll">Turn the page ↓</a>
+      </div>
+      <div class="hero-leaf hero-leaf-1"></div>
+      <div class="hero-leaf hero-leaf-2"></div>
+      <div class="hero-leaf hero-leaf-3"></div>
+    </section>
+
+    <!-- 12 MONTHS BOOK -->
+    <section class="journey" id="journey">
+      <div class="section-header">
+        <p class="section-eyebrow">His Story So Far</p>
+        <h2 class="section-title">His First Year, Page by Page</h2>
+      </div>
+      <div class="book-viewer">
+        <div id="book-container"><!-- built by JS --></div>
+        <div class="book-nav">
+          <button class="book-prev" id="book-prev">←</button>
+          <span class="book-indicator" id="book-indicator">1 / 12</span>
+          <button class="book-next" id="book-next">→</button>
+        </div>
+        <div class="book-dots" id="book-dots"></div>
+      </div>
+    </section>
+
+    <!-- THEME SECTION -->
+    <section class="theme-section">
+      <div class="theme-inner">
+        <div class="theme-icon">
+          <!-- Stacked books — decorative SVG, site palette -->
+          <svg viewBox="0 0 130 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Drop shadow layer -->
+            <rect x="8" y="79" width="114" height="6" rx="3" fill="rgba(0,0,0,0.18)"/>
+
+            <!-- BOTTOM BOOK — deep burgundy -->
+            <rect x="6" y="68" width="114" height="18" rx="2" fill="#7d1e35"/>
+            <!-- spine -->
+            <rect x="6" y="68" width="12" height="18" rx="2" fill="#5c1526"/>
+            <!-- spine highlight -->
+            <line x1="18" y1="68" x2="18" y2="86" stroke="#e8a0a8" stroke-width="1" opacity="0.4"/>
+            <!-- page block -->
+            <rect x="18" y="69" width="101" height="16" rx="1" fill="#8b2540"/>
+            <!-- page edge lines -->
+            <line x1="20" y1="73" x2="118" y2="73" stroke="#f0c0c8" stroke-width="0.6" opacity="0.35"/>
+            <line x1="20" y1="77" x2="118" y2="77" stroke="#f0c0c8" stroke-width="0.6" opacity="0.25"/>
+            <line x1="20" y1="81" x2="118" y2="81" stroke="#f0c0c8" stroke-width="0.6" opacity="0.2"/>
+            <!-- gold bookmark -->
+            <path d="M100 68 L100 58 L107 62 L114 58 L114 68Z" fill="#c8a96e"/>
+
+            <!-- MIDDLE BOOK — rich navy -->
+            <rect x="14" y="48" width="96" height="18" rx="2" fill="#1e3a6e"/>
+            <!-- spine -->
+            <rect x="14" y="48" width="12" height="18" rx="2" fill="#142a52"/>
+            <!-- spine highlight -->
+            <line x1="26" y1="48" x2="26" y2="66" stroke="#a0b8e8" stroke-width="1" opacity="0.4"/>
+            <!-- page block -->
+            <rect x="26" y="49" width="83" height="16" rx="1" fill="#2a4880"/>
+            <!-- page edge lines -->
+            <line x1="28" y1="53" x2="108" y2="53" stroke="#c0d0f0" stroke-width="0.6" opacity="0.35"/>
+            <line x1="28" y1="57" x2="108" y2="57" stroke="#c0d0f0" stroke-width="0.6" opacity="0.25"/>
+            <line x1="28" y1="61" x2="108" y2="61" stroke="#c0d0f0" stroke-width="0.6" opacity="0.2"/>
+
+            <!-- TOP BOOK — warm amber/mustard -->
+            <rect x="22" y="28" width="80" height="18" rx="2" fill="#b86a10"/>
+            <!-- spine -->
+            <rect x="22" y="28" width="12" height="18" rx="2" fill="#8a4e0c"/>
+            <!-- spine highlight -->
+            <line x1="34" y1="28" x2="34" y2="46" stroke="#f5d090" stroke-width="1" opacity="0.4"/>
+            <!-- page block -->
+            <rect x="34" y="29" width="67" height="16" rx="1" fill="#c87a1e"/>
+            <!-- page edge lines -->
+            <line x1="36" y1="33" x2="100" y2="33" stroke="#fae0b0" stroke-width="0.6" opacity="0.4"/>
+            <line x1="36" y1="37" x2="100" y2="37" stroke="#fae0b0" stroke-width="0.6" opacity="0.28"/>
+            <line x1="36" y1="41" x2="100" y2="41" stroke="#fae0b0" stroke-width="0.6" opacity="0.2"/>
+
+            <!-- Gold star above the stack -->
+            <path d="M65 12 L66.8 17.5 L72.5 17.5 L68 21 L69.8 26.5 L65 23 L60.2 26.5 L62 21 L57.5 17.5 L63.2 17.5Z" fill="#c8a96e"/>
+          </svg>
+        </div>
+        <h2 class="theme-title">Help build their first library</h2>
+        <p class="theme-body">
+          We've been building their first library — and we'd love for you to be part of it. At the party, you'll find a book waiting with your name on it. All we ask is a few words inside the cover — a note, a memory, a wish — for them to find when they're old enough to read it themselves.
+        </p>
+        <p class="theme-body">
+          By the end of the evening, the shelf will be full.
+          Every book a story. Every story from someone who was there.
+        </p>
+        <div class="theme-quote">"A reader lives a thousand lives before he dies."</div>
+      </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section class="rsvp-section" id="rsvp">
+      <div class="section-header">
+        <p class="section-eyebrow">You're Invited</p>
+        <h2 class="section-title">RSVP &amp; Claim Your Book</h2>
+      </div>
+
+      <div class="event-details">
+        <div class="event-detail-item">
+          <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+          </svg>
+          <div>
+            <p class="event-detail-label">Date</p>
+            <p class="event-detail-value">Your Party Date</p>
+          </div>
+        </div>
+        <div class="event-detail-divider"></div>
+        <div class="event-detail-item">
+          <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+          </svg>
+          <div>
+            <p class="event-detail-label">Time</p>
+            <p class="event-detail-value">12:00 pm onwards</p>
+          </div>
+        </div>
+        <div class="event-detail-divider"></div>
+        <div class="event-detail-item">
+          <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21c-4-4-7-7.5-7-10.5a7 7 0 1 1 14 0c0 3-3 6.5-7 10.5z"/><circle cx="12" cy="10.5" r="2.5"/>
+          </svg>
+          <div>
+            <p class="event-detail-label">Location</p>
+            <p class="event-detail-value">Your Venue, Your City</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rsvp-card" id="rsvp-card">
+        <div class="rsvp-field">
+          <label>Your names</label>
+          <input type="text" id="rsvp-name" placeholder="e.g. The Sharma Family" />
+        </div>
+        <div class="rsvp-field">
+          <label>Number of guests attending</label>
+          <input type="number" id="rsvp-count" placeholder="e.g. 3" min="1" max="10" />
+        </div>
+
+        <div class="rsvp-field">
+          <label>Pick up to 3 books <span class="label-note">— with 31 waiting for new owners, every selection helps fill the shelf!</span></label>
+          <div class="book-select-wrap" id="book-select-wrap">
+            <div class="book-loading" id="book-loading">Loading available books…</div>
+            <div class="book-checkboxes" id="book-checkboxes"></div>
+          </div>
+        </div>
+
+        <div class="rsvp-field">
+          <label>Or suggest one you'd highly recommend <span class="label-note">(title + author)</span></label>
+          <input type="text" id="own-book" placeholder="e.g. The Jungle Book — Rudyard Kipling" maxlength="120" />
+        </div>
+
+        <button class="rsvp-submit" id="rsvp-submit">Confirm RSVP ✦</button>
+        <button class="rsvp-delete" id="rsvp-delete" style="display:none">Cancel my RSVP</button>
+        <p class="rsvp-error" id="rsvp-error"></p>
+      </div>
+
+      <div class="rsvp-success" id="rsvp-success">
+        <div class="success-icon">📖</div>
+        <h3>You're on the list!</h3>
+        <p>See you at their First Chapter. We can't wait.</p>
+        <div class="success-books" id="success-books"></div>
+        <p class="success-warning" id="success-warning" style="display:none"></p>
+        <button class="rsvp-edit-btn" id="rsvp-edit-btn">Edit my RSVP</button>
+      </div>
+    </section>
+
+    <!-- GUEST LIST -->
+    <section class="guests-section" id="guests">
+      <div class="section-header">
+        <p class="section-eyebrow">Coming to celebrate</p>
+        <h2 class="section-title">The Guest List</h2>
+      </div>
+      <div class="guests-list" id="guests-list">
+        <p class="guests-loading">Loading…</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p class="footer-name">Aarav · Chapter One</p>
+      <p class="footer-date">Your City</p>
+      <p class="footer-hosts">With love, Arjun &amp; Priya</p>
+    </footer>
+
+  </div><!-- /main-site -->
+
+  <script src="/js/months.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

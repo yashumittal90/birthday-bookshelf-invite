@@ -1,0 +1,15 @@
+const MONTHS = [
+  { num: 0,  label: "Day One",          caption: "They arrived and changed everything",          img: "https://picsum.photos/seed/baby0/600/600"  },
+  { num: 1,  label: "The Footballer",   caption: "Eyes on the goal, always",                     img: "https://picsum.photos/seed/baby1/600/600"  },
+  { num: 2,  label: "The Bodybuilder",  caption: "Gainz incoming",                               img: "https://picsum.photos/seed/baby2/600/600"  },
+  { num: 3,  label: "The Raja",         caption: "Born with the energy of a thousand diyas",     img: "https://picsum.photos/seed/baby3/600/600"  },
+  { num: 4,  label: "The Athlete",      caption: "Built different",                              img: "https://picsum.photos/seed/baby4/600/600"  },
+  { num: 5,  label: "Santa",            caption: "Their first winter, their first magic",        img: "https://picsum.photos/seed/baby5/600/600"  },
+  { num: 6,  label: "The Don",          caption: "The offer you can't refuse",                   img: "https://picsum.photos/seed/baby6/600/600"  },
+  { num: 7,  label: "The Model",        caption: "The camera found its favourite subject",       img: "https://picsum.photos/seed/baby7/600/600"  },
+  { num: 8,  label: "The Artist",       caption: "Came in white. Left in colour.",               img: "https://picsum.photos/seed/baby8/600/600"  },
+  { num: 9,  label: "The Tourist",      caption: "A small world, after all",                     img: "https://picsum.photos/seed/baby9/600/600"  },
+  { num: 10, label: "The Gamer",        caption: "Already knows what they want",                 img: "https://picsum.photos/seed/baby10/600/600" },
+  { num: 11, label: "The Sneakerhead",  caption: "Soul searching",                               img: "https://picsum.photos/seed/baby11/600/600" },
+  { num: 12, label: "Chapter One",      caption: "Chapter One ends where the wild begins",       img: "https://picsum.photos/seed/baby12/600/600" },
+];

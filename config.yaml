@@ -1,0 +1,73 @@
+# ─────────────────────────────────────────────────────────────
+# Baby's First Chapter — Party Config (DEMO)
+# ─────────────────────────────────────────────────────────────
+# family_codes:
+#   Each key is the invite code (case-insensitive).
+#   members: names shown on the welcome letter and pre-filled in RSVP
+#   message: personal note shown on the welcome letter & note card
+#
+# books:
+#   List of "Title — Author" strings shown on the book shelf.
+#   Guests pick from this list when RSVPing (max 3 per family).
+# ─────────────────────────────────────────────────────────────
+
+family_codes:
+  DEMO01:
+    members: The Patel Family
+    message: So glad you're joining us for this special day — we've been looking forward to celebrating with you all. Can't wait to see you! 💛
+
+  DEMO02:
+    members: The Sharma Family
+    message: Having you here for this milestone means so much to us — from the early days to now, you've always been part of our story. 💛
+
+  DEMO03:
+    members: Priya & Ankit
+    message: So excited to celebrate this little one's first chapter with you both — here's to many more adventures together! 💛
+
+  DEMO04:
+    members: The Mehta Family
+    message: So happy to have you all here — the kids running around together is exactly the kind of beautiful chaos we're hoping for. 💛
+
+  DEMO05:
+    members: dear friends
+    message: We wish you could be here in person, but we'd love for you to write a little note for the shelf — even from far away, it'll mean the world someday. 💛
+
+books:
+  # Infant / Board (0-2) — Already have
+  - "Goodnight Moon — Margaret Wise Brown"
+  - "The Very Hungry Caterpillar — Eric Carle"
+  - "Splish Splash - Slide and Seek"
+  - "See, Touch and Feel ABC"
+  - "Diwali - Slide and Seek"
+  - "Out in Space - Slide and Seek"
+  - "How Loud is a Lion - Slide and Seek"
+  - "Dino Peek a Flap — Jaye Garnett"
+  - "Zoo Peek a Flap — Jaye Garnett"
+
+  # Infant / Board (0-2) — To buy
+  - "Pat the Bunny — Dorothy Kunhardt"
+  - "Brown Bear, Brown Bear, What Do You See? — Bill Martin Jr."
+  - "Dear Zoo — Rod Campbell"
+  - "Moo Baa La La La — Sandra Boynton"
+  - "Global Babies — Global Fund for Children"
+
+  # Indian Mythology — Hindi (set of 12)
+  - "Arjun (अर्जुन) — Hindi Mythological Tales"
+  - "Bhagwan Brahma (भगवान ब्रह्मा) — Hindi Mythological Tales"
+  - "Maa Durga (मां दुर्गा) — Hindi Mythological Tales"
+  - "Bhagwan Ganesh (भगवान गणेश) — Hindi Mythological Tales"
+  - "Veer Hanuman (वीर हनुमान) — Hindi Mythological Tales"
+  - "Bhagwan Krishna (भगवान कृष्ण) — Hindi Mythological Tales"
+  - "Maa Lakshmi (मां लक्ष्मी) — Hindi Mythological Tales"
+  - "Luv Kush (लव कुश) — Hindi Mythological Tales"
+  - "Mahabharat (महाभारत) — Hindi Mythological Tales"
+  - "Prahlad (प्रह्लाद) — Hindi Mythological Tales"
+  - "Ramayan (रामायण) — Hindi Mythological Tales"
+  - "Maa Saraswati (मां सरस्वती) — Hindi Mythological Tales"
+
+  # Additional Must-Haves (ages 4-7)
+  - "The BFG — Roald Dahl"
+  - "Charlotte's Web — E.B. White"
+  - "Matilda — Roald Dahl"
+  - "The Lion, the Witch and the Wardrobe — C.S. Lewis"
+  - "James and the Giant Peach — Roald Dahl"
