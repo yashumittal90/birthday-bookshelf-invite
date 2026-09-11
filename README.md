@@ -2,7 +2,7 @@
 
 A personalised, invite-code-gated birthday party site built for a baby's first birthday. Guests enter a unique family code, read a personal welcome note, browse a twelve-month photo book, RSVP, and claim a book from the shelf to write a note inside.
 
-**Live demo:** *(add your deployed URL here)*
+**Live demo:** [bookshelf.yashumittal.com](https://bookshelf.yashumittal.com) — use the code `DEMO01`
 
 ---
 
