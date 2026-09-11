@@ -33,8 +33,8 @@ A personalised, invite-code-gated birthday party site built for a baby's first b
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/your-username/birthday-invite-demo.git
-cd birthday-invite-demo
+git clone https://github.com/yashumittal90/birthday-bookshelf-invite.git
+cd birthday-bookshelf-invite
 npm install
 ```
 
